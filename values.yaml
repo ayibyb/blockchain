@@ -1,0 +1,87 @@
+## Specify the docker image registry with namespace (no trailing slash) to pull images from
+## Choose from below options:
+## China: registry.cn-hangzhou.aliyuncs.com/cos-solution
+## Oversea: registry.ap-southeast-1.aliyuncs.com/cos-solution
+##
+dockerImageRegistry: registry.cn-beijing.aliyuncs.com/cos-solution
+
+## Public IP address for external applications to access services via NodePort
+##
+externalAddress: 1.2.3.4
+
+## Name of Hyperledger Fabric blockchain network
+##
+fabricNetwork: network01
+
+## Name of the initial channel of blockchain network
+##
+fabricChannel: creditchannel
+
+## Number of orderers
+## 
+ordererNum: 3
+
+## Domain of orderers
+## This domain will be used mainly for certification generation
+##
+ordererDomain: muheda.com
+
+## Domain of peers
+## This domain will be used mainly for certification generation
+##
+peerDomain: muheda.com
+
+## Number of peer organizations
+## There will be two peers created for each organization for HA. So the total number of peers
+## will be (orgNum * 2)
+##
+orgNum: 3
+
+## NodePort list for CA services
+## We use JSON-format sequence so that it will be easier for user to set via CLI
+##
+caExternalPortList: ["31054", "31064","31074"]
+
+## NodePort list for orderer services
+## We use JSON-format sequence so that it will be easier for user to set via CLI
+##
+ordererExternalPortList: ["31050", "31060", "31070"]
+
+## NodePort list for peer services via gRPC
+## We use JSON-format sequence so that it will be easier for user to set via CLI
+##
+peerExternalGrpcPortList: ["31051", "31151", "31061", "31161", "31071", "31171"]
+
+## NodePort list for peer services via eventing
+## We use JSON-format sequence so that it will be easier for user to set via CLI
+##
+peerExternalEventPortList: ["31053", "31153", "31063", "31163", "31073", "31173"]
+
+## Specify an imagePullPolicy
+## It's recommended to change this to 'Always' if the image tag is 'latest'
+## ref: http://kubernetes.io/docs/user-guide/images/#updating-images
+##
+imagePullPolicy: IfNotPresent
+
+## Specify version of Hyperledger Fabric. 
+##
+hyperledgerFabricVersion: 1.1.0
+
+## Specify version of third-party images of Hyperledger Fabric
+## like CouchDB, ZooKeeper, Kafka
+##
+thirdPartyImageVersion: 0.4.6
+
+## Specify whether to deploy blockchain explorer
+##
+explorer:
+  enabled: true
+
+
+## Integration with Alibaba Cloud Log Service
+##
+logService:
+  enabled: false
+  region: cn_hangzhou
+  userID: "1234567890"
+  machineGroup: blockchain-network01
